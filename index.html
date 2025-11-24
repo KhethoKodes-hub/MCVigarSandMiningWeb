@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mcvigar | Building Tomorrow's Africa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #0066ff;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.95) 0%, rgba(0, 204, 255, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=1600') center/cover fixed;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            color: white;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn-primary {
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #0066ff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1.2rem 3rem;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            border: 2px solid white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #e3f2ff 0%, #d4edff 100%);
+            color: #0066ff;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.15);
+            border-color: rgba(0, 102, 255, 0.2);
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #e3f2ff 0%, #d4edff 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .about-card:hover .about-icon {
+            transform: rotate(10deg) scale(1.1);
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.03) 0%, rgba(0, 204, 255, 0.03) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 102, 255, 0.2);
+            border-color: rgba(0, 102, 255, 0.1);
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-content {
+            color: white;
+        }
+
+        .service-card:hover .service-content h3,
+        .service-card:hover .service-content p {
+            color: white;
+        }
+
+        .service-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .service-emoji {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            transition: color 0.4s ease;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            transition: color 0.4s ease;
+        }
+
+        /* Objectives Section */
+        .objectives {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.97) 0%, rgba(0, 204, 255, 0.97) 100%),
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600') center/cover;
+            color: white;
+        }
+
+        .objectives .section-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .objectives .section-title {
+            color: white;
+        }
+
+        .objectives .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .objectives-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .objective-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 2rem 2rem 2rem 5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .objective-item::before {
+            content: '✓';
+            position: absolute;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: #0066ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .objective-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .objective-item:hover::before {
+            transform: translateY(-50%) scale(1.2) rotate(360deg);
+        }
+
+        /* Vision Mission Section */
+        .vision-mission {
+            background: white;
+        }
+
+        .vm-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .vm-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 204, 255, 0.05) 100%);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vm-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            transition: height 0.4s ease;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.15);
+            border-color: rgba(0, 102, 255, 0.2);
+        }
+
+        .vm-card:hover::before {
+            height: 100%;
+        }
+
+        .vm-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .vm-card h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .vm-card p {
+            color: #666;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 102, 255, 0.15);
+            border-color: rgba(0, 102, 255, 0.2);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            transition: transform 0.4s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .contact-card h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #0066ff;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: #999;
+            margin-top: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: left 0.3s ease;
+                padding: 2rem;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .vm-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">MCVIGAR</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🇿🇦 Proudly South African</div>
+            <h1>Building Tomorrow's<br>Africa Today</h1>
+            <p>A diversified leader in mining, construction, manufacturing, and farming — committed to empowerment, sustainability, and excellence across every sector.</p>
+            <div class="hero-buttons">
+                <a href="services.html" class="btn-primary">Explore Services →</a>
+                <a href="contact.html " class="btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <div class="section-badge">Who We Are</div>
+            <h2 class="section-title">Empowerment Through Excellence</h2>
+            <p class="section-subtitle">Mcvigar Sand Mining (Pty) Ltd regards its responsibility to help bring about the empowerment of previously disadvantaged South Africans as integral to being a model corporate citizen and a truly South African company.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">🏆</div>
+                <h3>Our Legacy</h3>
+                <p>Building a positive and lasting legacy of which our stakeholders, their families and future generations will be proud through iconic structures, farms, bridges, dams, airports and roads.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">💎</div>
+                <h3>Our Values</h3>
+                <p>Dedicated to a value-based culture of safety, honesty and accountability across all levels of the group with commitment to prioritising people, equality and fairness.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">🌍</div>
+                <h3>Our Impact</h3>
+                <p>Active contribution to social development and sustainability, forming the backbone of many economies in developing countries.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <div class="section-badge">What We Do</div>
+            <h2 class="section-title">Diversified Excellence</h2>
+            <p class="section-subtitle">From mining to manufacturing, construction to farming — we deliver comprehensive solutions across multiple industries.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">⛏️</span>
+                    <h3>Mining</h3>
+                    <p>Sand Mining, Stone Mining, G5 Material, and other wide range of mining services.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">🏗️</span>
+                    <h3>Construction</h3>
+                    <p>Latest to classic Buildings, Bridges, Painting, Paving and other wide range of Construction Services.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">🏭</span>
+                    <h3>Manufacturing</h3>
+                    <p>Trailers, Window Frames, Steel, Steel Bending, JoJo Stands and more.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">🐄</span>
+                    <h3>Farming</h3>
+                    <p>Goats, Cows, Sheep, Chickens, Horses, Donkeys and other wide range of animals.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">🔧</span>
+                    <h3>Mechanical Engineering</h3>
+                    <p>Car servicing, engine building, car parts sales, breakdown services and more.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">🚧</span>
+                    <h3>Civil Engineering</h3>
+                    <p>Road Working, Plumbing and other wide range of Civil Engineering services.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">💧</span>
+                    <h3>Drilling</h3>
+                    <p>Water Drilling, Mineral Drilling and many more drilling services.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">🏪</span>
+                    <h3>Hardware & Sales</h3>
+                    <p>JoJo Tanks, Cements, River Sand, Building Material, Car Spares, Fencing Material and more.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">🚜</span>
+                    <h3>Rentals</h3>
+                    <p>TLB, Trucks, Plant Machinery, Trailers and many more equipment rentals.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <span class="service-emoji">🎨</span>
+                    <h3>Art Services</h3>
+                    <p>Steel Drawing, Cement Drawing, Paint Drawing, House Plan Design and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section id="objectives" class="objectives">
+        <div class="section-header">
+            <div class="section-badge">Our Commitment</div>
+            <h2 class="section-title">Transformation Objectives</h2>
+            <p class="section-subtitle">Driving meaningful change and sustainable development across all sectors we operate in.</p>
+        </div>
+        <div class="objectives-list">
+            <div class="objective-item">Transform and grow sectors</div>
+            <div class="objective-item">To achieve a substantial change in the racial and gender composition of the ownership, control and management within the sector</div>
+            <div class="objective-item">To address the critical skills shortage and skills development with a specific focus on women</div>
+            <div class="objective-item">To enhance entrepreneurial development and sustainable development of Black Economic Empowered (BEE) Small, Medium and Micro Enterprise (SMME) construction, farming, mining and manufacturing companies through strategic partnerships</div>
+            <div class="objective-item">To bring an end to the malpractice of fronting in the industry</div>
+        </div>
+    </section>
+
+    <!-- Vision Mission Section -->
+    <section id="vision" class="vision-mission">
+        <div class="section-header">
+            <div class="section-badge">Our Direction</div>
+            <h2 class="section-title">Vision & Mission</h2>
+            <p class="section-subtitle">Guided by purpose, driven by excellence.</p>
+        </div>
+        <div class="vm-container">
+            <div class="vm-card">
+                <div class="vm-label">Vision</div>
+                <h3>Top-Quartile Performance</h3>
+                <p>Mcvigar Sand Mining (Pty) Ltd aims to own and operate a portfolio of infrastructure, mining, farming and manufacturing-related businesses, each of which will achieve top-quartile performance compared to its peers when measured against return on invested capital, earnings growth, and positive cash flow generation through the business cycle.</p>
+            </div>
+            <div class="vm-card">
+                <div class="vm-label">Mission</div>
+                <h3>Building a Lasting Legacy</h3>
+                <p>Building a positive and lasting legacy of which our stakeholders, their families and future generations will be proud.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <div class="section-badge">Let's Connect</div>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to build South Africa's future together? Reach out to us today.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h4>Visit Us</h4>
+                    <p>4 Produkte Rd<br>Kuruman, 8460</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h4>Call Us</h4>
+                    <p><a href="tel:+27812142025">+27 (0) 81 214 2025</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h4>Email Us</h4>
+                    <p>
+                        <a href="mailto:info@mcvigar.co.za">info@mcvigar.co.za</a><br>
+                        <a href="mailto:mcvigargroup@gmail.com">mcvigargroup@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MCVIGAR</div>
+            <p>Empowering South Africa | Building the Future</p>
+            <p class="footer-text">&copy; 2024 Mcvigar Sand Mining (Pty) Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.about-card, .service-card, .vm-card, .contact-card, .objective-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

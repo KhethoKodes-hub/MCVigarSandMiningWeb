@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Mcvigar Sand Mining</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #0066ff;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.95) 0%, rgba(0, 204, 255, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=1600') center/cover fixed;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        /* Services Grid Section */
+        .services-section {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #e3f2ff 0%, #d4edff 100%);
+            color: #0066ff;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Service Categories */
+        .service-category {
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid rgba(0, 102, 255, 0.1);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: transform 0.4s ease;
+        }
+
+        .service-category:hover .category-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 2px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.2);
+            border-color: transparent;
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-content {
+            color: white;
+        }
+
+        .service-card:hover .service-content h3,
+        .service-card:hover .service-content p,
+        .service-card:hover .service-content li {
+            color: white;
+        }
+
+        .service-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .service-emoji {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            transition: color 0.4s ease;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            transition: color 0.4s ease;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-list li {
+            padding: 0.6rem 0 0.6rem 2rem;
+            color: #666;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .service-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #0066ff;
+            font-weight: 900;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-list li::before {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.95) 0%, rgba(0, 204, 255, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1600') center/cover;
+            padding: 5rem 5%;
+            text-align: center;
+            color: white;
+            margin: 5rem 0;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #0066ff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.03) 0%, rgba(0, 204, 255, 0.03) 100%);
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.15);
+            border-color: rgba(0, 102, 255, 0.2);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 204, 255, 0.05) 100%);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.15) rotate(360deg);
+        }
+
+        .feature-card h4 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: #999;
+            margin-top: 1rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .category-title {
+                font-size: 1.8rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+        }
+
+        /* Animations */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">MCVIGAR</div>
+            <ul class="nav-menu">
+               <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <div class="hero-badge">Our Services</div>
+            <h1>Comprehensive Solutions Across 10+ Industries</h1>
+            <p>From mining to manufacturing, construction to farming — we deliver excellence across every sector we serve.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="section-header">
+            <div class="section-badge">What We Offer</div>
+            <h2 class="section-title">Our Service Portfolio</h2>
+            <p class="section-subtitle">A diversified approach to building South Africa's future</p>
+        </div>
+
+        <!-- Mining Services -->
+        <div class="service-category animate-in">
+            <div class="category-header">
+                <div class="category-icon">⛏️</div>
+                <h2 class="category-title">Mining</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🏔️</span>
+                        <h3>Sand Mining</h3>
+                        <p>Professional sand extraction and processing services for construction and industrial applications.</p>
+                        <ul class="service-list">
+                            <li>River Sand</li>
+                            <li>Building Sand (Bou Sand)</li>
+                            <li>Quality assured materials</li>
+                            <li>Bulk supply available</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🪨</span>
+                        <h3>Stone Mining</h3>
+                        <p>High-quality stone extraction for construction and infrastructure projects.</p>
+                        <ul class="service-list">
+                            <li>Crushed stone</li>
+                            <li>Aggregates</li>
+                            <li>Various grades available</li>
+                            <li>Large-scale operations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🛤️</span>
+                        <h3>G5 Material</h3>
+                        <p>Premium G5 material for road construction and infrastructure development.</p>
+                        <ul class="service-list">
+                            <li>Road base material</li>
+                            <li>Compaction tested</li>
+                            <li>Meets specifications</li>
+                            <li>Timely delivery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Construction Services -->
+        <div class="service-category animate-in">
+            <div class="category-header">
+                <div class="category-icon">🏗️</div>
+                <h2 class="category-title">Construction</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🏢</span>
+                        <h3>Building Construction</h3>
+                        <p>Latest to classic building construction services for residential, commercial, and industrial projects.</p>
+                        <ul class="service-list">
+                            <li>Residential buildings</li>
+                            <li>Commercial complexes</li>
+                            <li>Industrial facilities</li>
+                            <li>Renovation projects</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🌉</span>
+                        <h3>Bridges & Infrastructure</h3>
+                        <p>Specialized bridge construction and major infrastructure development.</p>
+                        <ul class="service-list">
+                            <li>Bridge construction</li>
+                            <li>Road infrastructure</li>
+                            <li>Dams and airports</li>
+                            <li>Large-scale projects</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🎨</span>
+                        <h3>Painting & Paving</h3>
+                        <p>Professional painting and paving services for all types of projects.</p>
+                        <ul class="service-list">
+                            <li>Interior & exterior painting</li>
+                            <li>Paving services</li>
+                            <li>Surface preparation</li>
+                            <li>Quality finishes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manufacturing Services -->
+        <div class="service-category animate-in">
+            <div class="category-header">
+                <div class="category-icon">🏭</div>
+                <h2 class="category-title">Manufacturing</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🚛</span>
+                        <h3>Trailers & Equipment</h3>
+                        <p>Custom trailer manufacturing for transport and agricultural needs.</p>
+                        <ul class="service-list">
+                            <li>Custom trailers</li>
+                            <li>Agricultural trailers</li>
+                            <li>Transport solutions</li>
+                            <li>Made to specification</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🔩</span>
+                        <h3>Steel Products</h3>
+                        <p>Steel fabrication, bending, and custom metalwork solutions.</p>
+                        <ul class="service-list">
+                            <li>Steel fabrication</li>
+                            <li>Steel bending</li>
+                            <li>Window frames</li>
+                            <li>Custom metalwork</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🛠️</span>
+                        <h3>JoJo Stands & More</h3>
+                        <p>Manufacturing of JoJo tank stands and various specialized products.</p>
+                        <ul class="service-list">
+                            <li>JoJo tank stands</li>
+                            <li>Custom stands</li>
+                            <li>Durable materials</li>
+                            <li>Installation available</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Farming Services -->
+        <div class="service-category animate-in">
+            <div class="category-header">
+                <div class="category-icon">🐄</div>
+                <h2 class="category-title">Farming</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🐂</span>
+                        <h3>Livestock Farming</h3>
+                        <p>Comprehensive livestock farming including cattle, goats, and sheep.</p>
+                        <ul class="service-list">
+                            <li>Cattle farming</li>
+                            <li>Goats and sheep</li>
+                            <li>Sustainable practices</li>
+                            <li>Quality breeding</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🐔</span>
+                        <h3>Poultry & Small Animals</h3>
+                        <p>Poultry farming and small animal husbandry operations.</p>
+                        <ul class="service-list">
+                            <li>Chicken farming</li>
+                            <li>Egg production</li>
+                            <li>Small animal care</li>
+                            <li>Sustainable methods</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🐴</span>
+                        <h3>Work Animals</h3>
+                        <p>Breeding and care of horses, donkeys, and other work animals.</p>
+                        <ul class="service-list">
+                            <li>Horse breeding</li>
+                            <li>Donkey farming</li>
+                            <li>Animal welfare</li>
+                            <li>Training services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engineering Services -->
+        <div class="service-category animate-in">
+            <div class="category-header">
+                <div class="category-icon">🔧</div>
+                <h2 class="category-title">Engineering</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🚗</span>
+                        <h3>Mechanical Engineering</h3>
+                        <p>Comprehensive mechanical services including car servicing and engine work.</p>
+                        <ul class="service-list">
+                            <li>Car servicing</li>
+                            <li>Engine building</li>
+                            <li>Breakdown services</li>
+                            <li>Maintenance programs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🚧</span>
+                        <h3>Civil Engineering</h3>
+                        <p>Road working, plumbing, and wide range of civil engineering solutions.</p>
+                        <ul class="service-list">
+                            <li>Road construction</li>
+                            <li>Plumbing services</li>
+                            <li>Infrastructure work</li>
+                            <li>Site development</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">💧</span>
+                        <h3>Drilling Services</h3>
+                        <p>Professional water and mineral drilling for various applications.</p>
+                        <ul class="service-list">
+                            <li>Water drilling</li>
+                            <li>Mineral drilling</li>
+                            <li>Borehole services</li>
+                            <li>Exploration drilling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hardware & Sales -->
+        <div class="service-category animate-in">
+            <div class="category-header">
+                <div class="category-icon">🏪</div>
+                <h2 class="category-title">Hardware & Sales</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🛢️</span>
+                        <h3>Hardware Products</h3>
+                        <p>Comprehensive range of hardware products and building materials.</p>
+                        <ul class="service-list">
+                            <li>JoJo Tanks</li>
+                            <li>Cements</li>
+                            <li>River & building sand</li>
+                            <li>Construction materials</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🚘</span>
+                        <h3>Automotive Sales</h3>
+                        <p>Car spares and automotive parts for various makes and models.</p>
+                        <ul class="service-list">
+                            <li>Car spares</li>
+                            <li>Genuine parts</li>
+                            <li>Aftermarket options</li>
+                            <li>Competitive pricing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🧱</span>
+                        <h3>Building Materials</h3>
+                        <p>Complete range of building and fencing materials for all projects.</p>
+                        <ul class="service-list">
+                            <li>Fencing material</li>
+                            <li>Building supplies</li>
+                            <li>Stones and aggregates</li>
+                            <li>G5 material</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rentals -->
+        <div class="service-category animate-in">
+            <div class="category-header">
+                <div class="category-icon">🚜</div>
+                <h2 class="category-title">Rentals</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🏗️</span>
+                        <h3>Plant Machinery</h3>
+                        <p>Heavy machinery and equipment rental for construction projects.</p>
+                        <ul class="service-list">
+                            <li>TLB rentals</li>
+                            <li>Excavators</li>
+                            <li>Plant machinery</li>
+                            <li>Flexible rental terms</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🚚</span>
+                        <h3>Transport Equipment</h3>
+                        <p>Trucks and transport equipment for hauling and logistics needs.</p>
+                        <ul class="service-list">
+                            <li>Truck rentals</li>
+                            <li>Tipper trucks</li>
+                            <li>Transport solutions</li>
+                            <li>Short & long term</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🚛</span>
+                        <h3>Trailers & More</h3>
+                        <p>Trailer rentals and various equipment for construction and farming.</p>
+                        <ul class="service-list">
+                            <li>Trailer rentals</li>
+                            <li>Various capacities</li>
+                            <li>Well-maintained fleet</li>
+                            <li>Competitive rates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Art Services -->
+        <div class="service-category animate-in">
+            <div class="category-header">
+                <div class="category-icon">🎨</div>
+                <h2 class="category-title">Art Services</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">✏️</span>
+                        <h3>Design Services</h3>
+                        <p>Creative design solutions for various applications and materials.</p>
+                        <ul class="service-list">
+                            <li>Steel drawing</li>
+                            <li>Cement drawing</li>
+                            <li>Paint drawing</li>
+                            <li>Custom designs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">📐</span>
+                        <h3>House Plan Design</h3>
+                        <p>Professional house plan design and architectural planning services.</p>
+                        <ul class="service-list">
+                            <li>Residential plans</li>
+                            <li>Custom designs</li>
+                            <li>3D visualization</li>
+                            <li>Building approvals</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <span class="service-emoji">🖼️</span>
+                        <h3>Custom Art</h3>
+                        <p>Bespoke art and design work for commercial and residential projects.</p>
+                        <ul class="service-list">
+                            <li>Custom artwork</li>
+                            <li>Murals & displays</li>
+                            <li>Signage design</li>
+                            <li>Creative solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="cta-content">
+            <h2>Need a Custom Solution?</h2>
+            <p>We specialize in creating tailored solutions for unique project requirements. Let's discuss how we can bring your vision to life.</p>
+            <a href="#contact" class="btn-primary">Request a Quote →</a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="why-choose">
+        <div class="section-header">
+            <div class="section-badge">Why Mcvigar</div>
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-subtitle">Excellence, integrity, and commitment to transformation in everything we do</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card animate-in">
+                <div class="feature-icon">🏆</div>
+                <h4>Industry Leader</h4>
+                <p>Decades of experience across 10+ industries delivering top-quartile performance</p>
+            </div>
+            <div class="feature-card animate-in">
+                <div class="feature-icon">🤝</div>
+                <h4>BEE Compliant</h4>
+                <p>Committed to Black Economic Empowerment and transformation initiatives</p>
+            </div>
+            <div class="feature-card animate-in">
+                <div class="feature-icon">✅</div>
+                <h4>Quality Assured</h4>
+                <p>Rigorous quality control processes ensuring excellence in every project</p>
+            </div>
+            <div class="feature-card animate-in">
+                <div class="feature-icon">💼</div>
+                <h4>Comprehensive Solutions</h4>
+                <p>One-stop shop for all mining, construction, manufacturing, and farming needs</p>
+            </div>
+            <div class="feature-card animate-in">
+                <div class="feature-icon">🌍</div>
+                <h4>Sustainable Practices</h4>
+                <p>Environmental responsibility and social sustainability in all operations</p>
+            </div>
+            <div class="feature-card animate-in">
+                <div class="feature-icon">⚡</div>
+                <h4>Reliable Service</h4>
+                <p>Timely delivery, transparent pricing, and dedicated customer support</p>
+            </div>
+            <div class="feature-card animate-in">
+                <div class="feature-icon">🛡️</div>
+                <h4>Safety First</h4>
+                <p>Industry-leading safety standards protecting our team and clients</p>
+            </div>
+            <div class="feature-card animate-in">
+                <div class="feature-icon">🚀</div>
+                <h4>Innovation Driven</h4>
+                <p>Modern equipment and cutting-edge techniques for superior results</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="cta-banner">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today to discuss your project requirements and receive a detailed quote. Our team is ready to help bring your vision to reality.</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="tel:+27812142025" class="btn-primary">📞 Call Us Now</a>
+                <a href="mailto:info@mcvigar.co.za" class="btn-primary">✉️ Email Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">MCVIGAR</div>
+        <p>Empowering South Africa | Building the Future</p>
+        <p style="margin-top: 1.5rem; color: #666;">
+            📍 4 Produkte Rd, Kuruman, 8460<br>
+            📞 <a href="tel:+27812142025" style="color: #666; text-decoration: none;">+27 (0) 81 214 2025</a><br>
+            ✉️ <a href="mailto:info@mcvigar.co.za" style="color: #666; text-decoration: none;">info@mcvigar.co.za</a> | 
+            <a href="mailto:mcvigargroup@gmail.com" style="color: #666; text-decoration: none;">mcvigargroup@gmail.com</a>
+        </p>
+        <p class="footer-text" style="margin-top: 2rem;">&copy; 2024 Mcvigar Sand Mining (Pty) Ltd. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Stagger animation for service cards
+        const addStaggerAnimation = () => {
+            document.querySelectorAll('.service-category').forEach((category, categoryIndex) => {
+                const cards = category.querySelectorAll('.service-card');
+                cards.forEach((card, cardIndex) => {
+                    card.style.transitionDelay = `${cardIndex * 100}ms`;
+                });
+            });
+
+            document.querySelectorAll('.feature-card').forEach((card, index) => {
+                card.style.transitionDelay = `${index * 50}ms`;
+            });
+        };
+
+        addStaggerAnimation();
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.page-hero');
+            const scrolled = window.pageYOffset;
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add active state to nav on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Service card click effect
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Add a pulse animation on click
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
